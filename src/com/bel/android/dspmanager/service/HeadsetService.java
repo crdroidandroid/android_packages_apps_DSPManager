@@ -51,9 +51,12 @@ public class HeadsetService extends Service {
         private final BassBoost mBassBoost;
         /** Session-specific virtualizer */
         private final Virtualizer mVirtualizer;
+        /** Session-specific dirac */
+        public final DiracFX mDirac;
 
         protected EffectSet(int sessionId) {
             try {
+                mDirac = new DiracFX(0, sessionId);
                 mCompression = new AudioEffect(EFFECT_TYPE_VOLUME,
                         AudioEffect.EFFECT_TYPE_NULL, 0, sessionId);
             } catch (IllegalArgumentException e) {
@@ -72,6 +75,7 @@ public class HeadsetService extends Service {
             mEqualizer.release();
             mBassBoost.release();
             mVirtualizer.release();
+            mDirac.release();
         }
     }
 
@@ -318,6 +322,13 @@ public class HeadsetService extends Service {
                     Short.valueOf(prefs.getString("dsp.headphone.mode", "0")));
         } catch (Exception e) {
             Log.e(TAG, "Error enabling virtualizer!");
+        }
+
+        try {
+            session.mDirac.setEnabled(prefs.getBoolean("dsp.dirac.enable", false));
+            session.mDirac.setFactorLevel(prefs.getInt("dsp.dirac.mode", 0));
+        } catch (Exception e) {
+            Log.e(TAG, "Error enabling dirac!", e);
         }
     }
 }

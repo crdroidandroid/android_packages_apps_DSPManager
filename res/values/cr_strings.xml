@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dirac HD Audio -->
+    <string name="pref_dirac_title">Dirac HD</string>
+    <string name="pref_dirac_summary_on">Dirac HD is enabled</string>
+    <string name="pref_dirac_summary_off">Dirac HD is disabled</string>
+
+</resources>
