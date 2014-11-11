@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_effect_freq_title">Seleziona la frequenza centrale dell\'effetto</string>
+    <string name="pref_headset_stereowide_title">Stereo widener</string>
+    <string name="pref_headset_stereowide_summary_on">Stereo widener è attivato</string>
+    <string name="pref_headset_stereowide_summary_off">Stereo widener è disattivato</string>
+    <string name="pref_headset_stereowide_enable">Attiva</string>
+    <string name="dialog_stereo">Stereo widener</string>
+
+    <!-- Dirac HD Audio -->
+    <string name="pref_dirac_title">Dirac HD</string>
+    <string name="pref_dirac_summary_on">Dirac HD è attivato</string>
+    <string name="pref_dirac_summary_off">Dirac HD è disattivato</string>
+</resources>
