@@ -12,6 +12,7 @@ import android.media.audiofx.AudioEffect;
 import android.media.audiofx.BassBoost;
 import android.media.audiofx.Equalizer;
 import android.media.audiofx.Virtualizer;
+import android.media.audiofx.StereoWide;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
@@ -51,6 +52,8 @@ public class HeadsetService extends Service {
         private final BassBoost mBassBoost;
         /** Session-specific virtualizer */
         private final Virtualizer mVirtualizer;
+        /** Session-specific stereo widener */
+        private final StereoWide mStereoWide;
 
         protected EffectSet(int sessionId) {
             try {
@@ -65,6 +68,7 @@ public class HeadsetService extends Service {
             mEqualizer = new Equalizer(0, sessionId);
             mBassBoost = new BassBoost(0, sessionId);
             mVirtualizer = new Virtualizer(0, sessionId);
+            mStereoWide = new StereoWide(0, sessionId);
         }
 
         protected void release() {
@@ -72,6 +76,7 @@ public class HeadsetService extends Service {
             mEqualizer.release();
             mBassBoost.release();
             mVirtualizer.release();
+            mStereoWide.release();
         }
     }
 
@@ -324,6 +329,13 @@ public class HeadsetService extends Service {
             session.mBassBoost.setCenterFrequency(Short.valueOf(preferences.getString("dsp.bass.freq", "55");
         } catch (Exception e) {
             Log.e(TAG, "Error enabling bassboost frequency!");
+        }
+
+        try {
+            session.mStereoWide.setEnabled(preferences.getBoolean("dsp.stereowide.enable", false));
+            session.mStereoWide.setStrength(Short.valueOf(preferences.getString("dsp.stereowide.mode", "0")));
+        } catch (Exception e) {
+            Log.e(TAG, "Error enabling stereo wide!");
         }
     }
 }
