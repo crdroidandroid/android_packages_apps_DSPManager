@@ -319,5 +319,11 @@ public class HeadsetService extends Service {
         } catch (Exception e) {
             Log.e(TAG, "Error enabling virtualizer!");
         }
+
+        try {
+            session.mBassBoost.setCenterFrequency(Short.valueOf(preferences.getString("dsp.bass.freq", "55");
+        } catch (Exception e) {
+            Log.e(TAG, "Error enabling bassboost frequency!");
+        }
     }
 }
