@@ -326,14 +326,14 @@ public class HeadsetService extends Service {
         }
 
         try {
-            session.mBassBoost.setCenterFrequency(Short.valueOf(preferences.getString("dsp.bass.freq", "55");
+            session.mBassBoost.setCenterFrequency(Short.valueOf(prefs.getString("dsp.bass.freq", "55")));
         } catch (Exception e) {
             Log.e(TAG, "Error enabling bassboost frequency!");
         }
 
         try {
-            session.mStereoWide.setEnabled(preferences.getBoolean("dsp.stereowide.enable", false));
-            session.mStereoWide.setStrength(Short.valueOf(preferences.getString("dsp.stereowide.mode", "0")));
+            session.mStereoWide.setEnabled(prefs.getBoolean("dsp.stereowide.enable", false));
+            session.mStereoWide.setStrength(Short.valueOf(prefs.getString("dsp.stereowide.mode", "0")));
         } catch (Exception e) {
             Log.e(TAG, "Error enabling stereo wide!");
         }
