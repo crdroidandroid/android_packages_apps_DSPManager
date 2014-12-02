@@ -23,7 +23,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="26dp"
             android:defaultValue="0"
-            android:max="2081"/>
+            android:max="2081"
+            android:dependency="dsp.dirac.enable" />
 
     </PreferenceCategory>
   
